@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan Hotel Online</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Styling halaman utama */
+        body {
+            background-image: url('batik1.jpeg');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: transparent;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 100%;
+            padding: 30px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: #333;
+            font-size: 1.8em;
+        }
+
+        .room-selection {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .room {
+            flex: 1;
+            min-width: 150px;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .room:hover {
+            transform: scale(1.05);
+        }
+
+        .room img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .message,
+        .summary {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .summary h3 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <audio loop="true">
+        <source src="audio/Ngoni.mp3" type="audio/mpeg">
+        Browsermu tidak mendukung tag audio, upgrade donk!
+    </audio>
+
+<div class="container">
+    <header>
+        <h1 style="color: tan;">Pemesanan Hotel Online</h1>
+    </header>
+
+    <form id="bookingForm">
+        <h2 style="color: white;">Pilih Kamar</h2>
+        <div class="room-selection">
+            <div class="room">
+                <img src="kamar1.jpg" alt="Kamar Standar">
+                <p><strong>Kamar Standar</strong></p>
+                <p>Rp 500.000/malam</p>
+                <input type="radio" name="room" value="500000" id="room1" required>
+            </div>
+            <div class="room">
+                <img src="kamar2.jpg" alt="Kamar Deluxe">
+                <p><strong>Kamar Deluxe</strong></p>
+                <p>Rp 750.000/malam</p>
+                <input type="radio" name="room" value="750000" id="room2" required>
+            </div>
+            <div class="room">
+                <img src="kamar3.jpg" alt="Kamar Suite">
+                <p><strong>Kamar Suite</strong></p>
+                <p>Rp 1.200.000/malam</p>
+                <input type="radio" name="room" value="1200000" id="room3" required>
+            </div>
+        </div>
+
+        <h2 style="color: white;">Data Pribadi</h2>
+        <div class="form-group">
+            <label for="name" style="color: white;">Nama Lengkap</label>
+            <input type="text" id="name" name="name" required placeholder="Masukkan nama lengkap">
+        </div>
+        <div class="form-group">
+            <label for="email" style="color: white;">Alamat Email</label>
+            <input type="email" id="email" name="email" required placeholder="Masukkan alamat email">
+        </div>
+        <div class="form-group">
+            <label for="phone" style="color: white;">Nomor WhatsApp</label>
+            <input type="text" id="phone" name="phone" required placeholder="Masukkan nomor WhatsApp">
+        </div>
+
+        <h2 style="color: white;">Pilih Tanggal Menginap</h2>
+        <div class="form-group">
+            <label for="checkin" style="color: white;">Tanggal Check-in</label>
+            <input type="date" id="checkin" name="checkin" required>
+        </div>
+        <div class="form-group">
+            <label for="checkout" style="color: white;">Tanggal Check-out</label>
+            <input type="date" id="checkout" name="checkout" required>
+        </div>
+
+        <h2 style="color: white;">Pilih Metode Pembayaran</h2>
+        <div class="form-group">
+            <label for="paymentMethod" style="color: white;">Metode Pembayaran</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="Dana">Dana</option>
+                <option value="Bank BRI">Bank BRI</option>
+                <option value="Bank Mandiri">Bank Mandiri</option>
+                <option value="OVO">OVO</option>
+            </select>
+        </div>
+
+        <button type="submit">Pesan Kamar</button>
+    </form>
+
+    <div class="message" id="successMessage">
+        Pemesanan dan check-in berhasil! Selamat menikmati pengalaman di hotel kami.
+    </div>
+
+    <div class="summary" id="summary">
+        <h3>Ringkasan Pemesanan:</h3>
+        <p id="summaryRoom"></p>
+        <p id="summaryName"></p>
+        <p id="summaryEmail"></p>
+        <p id="summaryPhone"></p>
+        <p id="summaryCheckin"></p>
+        <p id="summaryCheckout"></p>
+        <p id="summaryPayment"></p>
+        <p><strong>Total Harga: Rp <span id="totalPrice"></span></strong></p>
+        <p><strong>Terima kasih telah memesan dengan kami!</strong></p>
+    </div>
+</div>
+
+<script>
+
+    document.getElementById("bookingForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Mengambil data dari formulir dan melakukan perhitungan harga, seperti biasa
+        var roomPrice = parseInt(document.querySelector('input[name="room"]:checked').value);
+        var checkinDate = new Date(document.getElementById("checkin").value);
+        var checkoutDate = new Date(document.getElementById("checkout").value);
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        var paymentMethod = document.getElementById("paymentMethod").value;
+
+        var nights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
+
+        if (nights <= 0) {
+            alert("Tanggal check-out harus lebih dari tanggal check-in.");
+            return;
+        }
+
+        var totalPrice = roomPrice * nights;
+
+        // Menampilkan ringkasan pemesanan
+        document.getElementById("successMessage").style.display = "block";
+        document.getElementById("summaryRoom").innerText = "Kamar yang dipilih: " + document.querySelector('input[name="room"]:checked').parentNode.querySelector("strong").innerText;
+        document.getElementById("summaryName").innerText = "Nama: " + name;
+        document.getElementById("summaryEmail").innerText = "Email: " + email;
+        document.getElementById("summaryPhone").innerText = "Nomor WhatsApp: " + phone;
+        document.getElementById("summaryCheckin").innerText = "Tanggal Check-in: " + checkinDate.toLocaleDateString("id-ID");
+        document.getElementById("summaryCheckout").innerText = "Tanggal Check-out: " + checkoutDate.toLocaleDateString("id-ID");
+        document.getElementById("summaryPayment").innerText = "Metode Pembayaran: " + paymentMethod;
+        document.getElementById("totalPrice").innerText = totalPrice.toLocaleString();
+        document.getElementById("summary").style.display = "block";
+
+        // Mengatur ulang (reset) halaman setelah 7 detik
+        setTimeout(function() {
+            document.getElementById("bookingForm").reset(); // Reset form ke kondisi awal
+            document.getElementById("successMessage").style.display = "none"; // Sembunyikan pesan sukses
+            document.getElementById("summary").style.display = "none"; // Sembunyikan ringkasan pemesanan
+        }, 5000); // Ubah angka ini jika ingin waktu yang berbeda untuk reset
+    });
+</script>
+
+</body>
+</html>
