@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Diri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #6dd5ed, #2193b0);
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 1rem;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background: #ffeb3b;
+            color: #2193b0;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #fdd835;
+        }
+
+        .output {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+
+        .motivation {
+            margin-top: 20px;
+            font-size: 1rem;
+            font-style: italic;
+            color: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Isi Data Diri</h1>
+        <form id="dataForm">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" placeholder="Masukkan nama Anda" required>
+
+            <label for="age">Umur:</label>
+            <input type="number" id="age" placeholder="Masukkan umur Anda" required>
+
+            <label for="birthYear">Tahun Lahir:</label>
+            <input type="number" id="birthYear" placeholder="Masukkan tahun lahir Anda" required>
+
+            <label for="dream">Cita-cita:</label>
+            <input type="text" id="dream" placeholder="Masukkan cita-cita Anda" required>
+
+            <button type="button" onclick="displayData()">Tampilkan Data</button>
+        </form>
+
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function displayData() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const birthYear = document.getElementById('birthYear').value;
+            const dream = document.getElementById('dream').value;
+
+            if (name && age && birthYear && dream) {
+                const output = document.getElementById('output');
+                output.innerHTML = `
+                    <p>Nama: <span class="highlight">${name}</span></p>
+                    <p>Umur: <span class="highlight">${age}</span></p>
+                    <p>Tahun Lahir: <span class="highlight">${birthYear}</span></p>
+                    <p>Cita-cita: <span class="highlight">${dream}</span></p>
+                    <div class="motivation">Tetap semangat, ${name}! Cita-cita sebagai <span class="highlight">${dream}</span> akan tercapai jika terus berusaha dan pantang menyerah!</div>
+                `;
+            } else {
+                alert('Harap isi semua data dengan lengkap!');
+            }
+        }
+    </script>
+</body>
+</html>
